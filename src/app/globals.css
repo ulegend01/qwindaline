@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --color-brand-blue: #3B82F6;
+  --color-brand-blue-hover: #2563EB;
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+:root {
+  /* No need to redefine var(--background) here if used directly in @theme unless for dynamic switching, 
+     but keeping it for compatibility with some next.js patterns if needed. 
+     Tailwind v4 theme variables are available as utilities. */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom Utilities */
+@utility text-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+@utility border-glow {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
