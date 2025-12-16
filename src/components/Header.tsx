@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import { Twitter, Send } from "lucide-react"; // Using Lucid icons for generic, will use custom SVGs or text if specific branding needed but Lucid is good for generic
+import { Twitter, Send, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const navItems = [
         { name: "Home", href: "#home" },
         { name: "Proof of Work", href: "#work" },
@@ -35,7 +40,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Socials / Contact */}
+                    {/* Socials / Contact (Desktop) */}
                     <div className="hidden md:flex items-center space-x-4">
                         <a
                             href="https://x.com/Mrkwindaline"
@@ -61,17 +66,38 @@ const Header = () => {
                         </Link>
                     </div>
 
-                    {/* Mobile Menu Button - Minimal placeholder for now */}
+                    {/* Mobile Menu Button */}
                     <div className="md:hidden">
-                        <button className="text-gray-300 hover:text-white p-2">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="text-gray-300 hover:text-white p-2"
+                        >
                             <span className="sr-only">Open menu</span>
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMenuOpen && (
+                <div className="md:hidden bg-black/95 border-b border-white/10 absolute top-16 left-0 w-full p-4 flex flex-col space-y-4 shadow-2xl animate-in slide-in-from-top-5">
+                    {navItems.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-300 hover:text-white hover:bg-white/5 block px-3 py-2 rounded-md text-base font-medium"
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
+                    <div className="flex items-center gap-6 pt-4 border-t border-white/10">
+                        <a href="https://x.com/Mrkwindaline" target="_blank" className="text-gray-400 hover:text-brand-blue"><Twitter size={24} /></a>
+                        <a href="https://t.me/Qwindaline" target="_blank" className="text-gray-400 hover:text-brand-blue"><Send size={24} /></a>
+                    </div>
+                </div>
+            )}
         </header>
     );
 };
