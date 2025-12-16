@@ -92,7 +92,14 @@ const Header = () => {
                             {item.name}
                         </Link>
                     ))}
-                    <div className="flex items-center gap-6 pt-4 border-t border-white/10">
+                    <Link
+                        href="#contact"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block w-full text-center px-4 py-3 border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white rounded-full transition-all text-sm font-bold uppercase tracking-wide"
+                    >
+                        Let&#39;s Build
+                    </Link>
+                    <div className="flex items-center justify-center gap-6 pt-4 border-t border-white/10">
                         <a href="https://x.com/Mrkwindaline" target="_blank" className="text-gray-400 hover:text-brand-blue"><Twitter size={24} /></a>
                         <a href="https://t.me/Qwindaline" target="_blank" className="text-gray-400 hover:text-brand-blue"><Send size={24} /></a>
                     </div>
