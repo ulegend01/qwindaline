@@ -9,8 +9,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Mr Qwindaline | Web3 Ecosystem Architect",
-  description: "Solana GameFi & Ecosystem Jobber. Builder, Creator, and Community Lead.",
+  title: "Ibekwe Victor | Mr Qwindaline - Web3 Portfolio",
+  description: "Web3 Ambassador, Community Manager, and Project Management Student. Specializing in Growth, Content, and Community Building.",
 };
 
 export default function RootLayout({
